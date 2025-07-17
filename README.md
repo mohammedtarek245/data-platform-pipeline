@@ -14,13 +14,6 @@ A modular **offline-first ETL platform** built for simulating real-time event in
 
 ## High-Level Architecture
 
-┌──────────────┐     ┌──────────────┐     ┌────────────────────┐     ┌───────────────────────────────┐     ┌────────────────────┐     ┌────────────────────┐
-│ Kafka        │ --> │ Kafka Topics │ --> │ Spark Structured   │ --> │ JSON Output & Archiving      │ --> │ Airflow DAG        │ --> │ Reporting Tools    │
-│ Producers    │     │ (CRM, ERP,   │     │ Streaming Consumer │     │  • /output/ JSON             │     │ (Daily @ 2PMcairo time)     │     │ (Optional – PowerBI│
-│ (Mock Events)│     │ Website, App)│     │   • Parse / Clean  │     │  • /archive/ by timestamp    │     │ 1. produce         │     │  or Excel, etc.)   │
-└──────────────┘     └──────────────┘     └────────────────────┘     └───────────────────────────────┘     └────────────────────┘     └────────────────────┘
-      ▲                                                                                                                            │
-      └────────────────────────────── Controlled via Airflow DAG Scheduler ────────────────────────────────────────────────────────┘
 
 
 ![Pipeline Architecture](./docs/architecture.png)
